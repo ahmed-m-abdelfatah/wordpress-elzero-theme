@@ -104,5 +104,5 @@ gulp.task(tasks.watch, done => {
 });
 
 // starting
-gulp.task(tasks.start, gulp.series(tasks.html, tasks.img, tasks.css, tasks.js, tasks.lib));
+gulp.task(tasks.start, gulp.series(tasks.img, tasks.css, tasks.js, tasks.lib));
 gulp.task(tasks.default, gulp.parallel(tasks.watch, tasks.start));
