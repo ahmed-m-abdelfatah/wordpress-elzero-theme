@@ -23,6 +23,19 @@ function add_styles()
 
 function add_scripts()
 {
+  /**
+   * jquery is registered by wordpress using wp_register_script
+   * https://developer.wordpress.org/reference/functions/wp_register_script/
+   * https://developer.wordpress.org/reference/functions/wp_enqueue_script/#default-scripts-and-js-libraries-included-and-registered-by-wordpress
+   * wp_enqueue_script('jquery');
+   */
+
+  // we need to add jquery at the end of the body
+  wp_deregister_script('jquery');
+  wp_register_script('jquery', includes_url('/js/jquery/jquery.js'), array(), false, true); // registered a new jquery in footer
+
+  // other scripts
+  wp_enqueue_script('jquery');
   wp_enqueue_script('bootstrap-js', get_template_directory_uri() . './minified/assets/lib/js/bootstrap.bundle.min.js', array(), false, true);
   wp_enqueue_script('main-js', get_template_directory_uri() . './minified/assets/js/all.min.js', array(), false, true);
 }
