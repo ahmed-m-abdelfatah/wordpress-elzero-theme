@@ -4,30 +4,24 @@ const gulp = require('gulp'),
       autoPrefixer = require('gulp-autoprefixer'),
       // sourcemaps = require('gulp-sourcemaps'),
       concat = require('gulp-concat'),
-      connect = require('gulp-connect'),
-      pug = require('gulp-pug'),
       imagemin = require('gulp-imagemin'),
       plumber = require('gulp-plumber'),
-      zip = require('gulp-zip'),
-      uglify = require('gulp-uglify'),
-      htmlmin = require('gulp-htmlmin');
+      uglify = require('gulp-uglify');
 
 const paths = {
-  src: '.',
-  build: './build',
+  root: '.',
+  minified: './minified',
 };
 
 const sources = {
-  php: [`${paths.src}/**/*.php`],
-  img: [`${paths.src}/assets/img/**/!(_)*.+(png|jpg|jpeg|gif|svg|ico)`],
+  img: [`${paths.root}/assets/img/**/!(_)*.+(png|jpg|jpeg|gif|svg|ico)`],
   css: [
-    `${paths.src}/assets/styles/**/_*.+(css|scss)`,
-    `${paths.src}/assets/styles/**/!(_)*.+(css|scss)`,
-    `${paths.src}/assets/styles/**/!(_)*.rtl.+(css|scss)`,
+    `${paths.root}/assets/styles/**/_*.+(css|scss)`,
+    `${paths.root}/assets/styles/**/!(_)*.+(css|scss)`,
+    `${paths.root}/assets/styles/**/!(_)*.rtl.+(css|scss)`,
   ],
-  js: [`${paths.src}/assets/js/**/*.js`],
-  lib: [`${paths.src}/assets/lib/**/*.*`],
-  dist: [`${paths.build}/**/*.*`, './README.md'],
+  js: [`${paths.root}/assets/js/**/*.js`],
+  lib: [`${paths.root}/assets/lib/**/*.*`],
 };
 
 const tasks = {
@@ -35,20 +29,18 @@ const tasks = {
   css: 'css',
   js: 'js',
   lib: 'lib',
-  dist: 'dist',
   start: 'start',
   watch: 'watch',
   default: 'default',
-  final: 'final',
 };
 
 // handel img
-gulp.task(tasks.img, (_, dest = `${paths.build}/assets/img`) => {
-  return gulp.src(sources.img).pipe(plumber()).pipe(imagemin()).pipe(gulp.dest(dest)).pipe(connect.reload());
+gulp.task(tasks.img, (_, dest = `${paths.minified}/assets/img`) => {
+  return gulp.src(sources.img).pipe(plumber()).pipe(imagemin()).pipe(gulp.dest(dest));
 });
 
 // handel css
-gulp.task(tasks.css, (done, dest = `${paths.build}/assets/css`) => {
+gulp.task(tasks.css, (done, dest = `${paths.minified}/assets/css`) => {
   /**
    * In css task we use that method to stop duplicates in all.min.css
    * this for watching only: _*.+(css|scss)
@@ -78,12 +70,12 @@ gulp.task(tasks.css, (done, dest = `${paths.build}/assets/css`) => {
     // .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(dest));
 
-  gulp.src(sources.css).pipe(connect.reload());
+  gulp.src(sources.css);
   done();
 });
 
 // handel js
-gulp.task(tasks.js, (_, dest = `${paths.build}/assets/js`) => {
+gulp.task(tasks.js, (_, dest = `${paths.minified}/assets/js`) => {
   return (
     gulp
       .src(sources.js)
@@ -93,13 +85,12 @@ gulp.task(tasks.js, (_, dest = `${paths.build}/assets/js`) => {
       .pipe(uglify())
       // .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dest))
-      .pipe(connect.reload())
   );
 });
 
 // handel lib
-gulp.task(tasks.lib, (_, dest = `${paths.build}/assets/lib`) => {
-  return gulp.src(sources.lib).pipe(gulp.dest(dest)).pipe(connect.reload());
+gulp.task(tasks.lib, (_, dest = `${paths.minified}/assets/lib`) => {
+  return gulp.src(sources.lib).pipe(gulp.dest(dest));
 });
 
 // watch files
