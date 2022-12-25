@@ -26,3 +26,12 @@ function add_scripts()
   wp_enqueue_script('bootstrap-js', get_template_directory_uri() . './minified/assets/lib/js/bootstrap.bundle.min.js', array(), false, true);
   wp_enqueue_script('main-js', get_template_directory_uri() . './minified/assets/js/all.min.js', array(), false, true);
 }
+
+/**
+ * add actions
+ * by: ahmed abdelfatah
+ * add_action( $hook_name:string, $callback:callable, $priority:integer, $accepted_args:integer )
+ */
+
+add_action('wp_enqueue_scripts', 'add_styles');
+add_action('wp_enqueue_scripts', 'add_scripts');
