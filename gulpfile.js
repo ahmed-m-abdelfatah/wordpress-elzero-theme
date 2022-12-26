@@ -10,7 +10,7 @@ const gulp = require('gulp'),
 
 const paths = {
   root: '.',
-  minified: './minified_assets',
+  minified: './assets_minified',
 };
 
 const sources = {
