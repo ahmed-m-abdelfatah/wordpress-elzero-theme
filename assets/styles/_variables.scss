@@ -1,0 +1,78 @@
+// variables
+$left: 'left';
+$right: 'right';
+
+// border
+$border: (
+  border: 1px solid #ccc,
+  rad-10: 10px,
+);
+
+// transition
+$transition: (
+  time: 0.3s,
+);
+
+// colors
+$colors: (
+  bg: #f1f5f9,
+  shadow: 0 0 10px #ddd,
+  active: #f6f6f6,
+  blue-main: #0075ff,
+  blue-alt: #0d69d5,
+  orange: #f59e0b,
+  green: #22c55e,
+  red: #f44336,
+  grey: #888,
+  eee: #eee,
+  white: white,
+  black: black,
+  ccc: #ccc,
+  333: #333,
+);
+
+// screens
+$breakpoints: (
+  sm: 767px,
+  md: 991px,
+  lg: 1100px,
+);
+
+// mobileScreen
+@mixin smMin {
+  @media (min-width: map-get($breakpoints,sm)) {
+    @content;
+  }
+}
+
+@mixin smMax {
+  @media (max-width: map-get($breakpoints,sm)) {
+    @content;
+  }
+}
+
+//midScreen
+@mixin mdMin {
+  @media (min-width: map-get($breakpoints,md)) {
+    @content;
+  }
+}
+
+@mixin mdMax {
+  @media (max-width: map-get($breakpoints,md)) {
+    @content;
+  }
+}
+
+//largeScreen
+@mixin lgMin {
+  @media (min-width: map-get($breakpoints,lg)) {
+    @content;
+  }
+}
+
+@mixin lgMax {
+  @media (max-width: map-get($breakpoints,lg)) {
+    @content;
+  }
+}
