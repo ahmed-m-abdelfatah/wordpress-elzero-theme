@@ -10,7 +10,7 @@ const gulp = require('gulp'),
 
 const paths = {
   root: '.',
-  minified: './minified',
+  minified: './minified_assets',
 };
 
 const sources = {
@@ -35,12 +35,12 @@ const tasks = {
 };
 
 // handel img
-gulp.task(tasks.img, (_, dest = `${paths.minified}/assets/img`) => {
+gulp.task(tasks.img, (_, dest = `${paths.minified}/img`) => {
   return gulp.src(sources.img).pipe(plumber()).pipe(imagemin()).pipe(gulp.dest(dest));
 });
 
 // handel css
-gulp.task(tasks.css, (done, dest = `${paths.minified}/assets/css`) => {
+gulp.task(tasks.css, (done, dest = `${paths.minified}/css`) => {
   /**
    * In css task we use that method to stop duplicates in all.min.css
    * this for watching only: _*.+(css|scss)
@@ -75,7 +75,7 @@ gulp.task(tasks.css, (done, dest = `${paths.minified}/assets/css`) => {
 });
 
 // handel js
-gulp.task(tasks.js, (_, dest = `${paths.minified}/assets/js`) => {
+gulp.task(tasks.js, (_, dest = `${paths.minified}/js`) => {
   return (
     gulp
       .src(sources.js)
@@ -89,7 +89,7 @@ gulp.task(tasks.js, (_, dest = `${paths.minified}/assets/js`) => {
 });
 
 // handel lib
-gulp.task(tasks.lib, (_, dest = `${paths.minified}/assets/lib`) => {
+gulp.task(tasks.lib, (_, dest = `${paths.minified}/lib`) => {
   return gulp.src(sources.lib).pipe(gulp.dest(dest));
 });
 
