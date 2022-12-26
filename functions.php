@@ -15,7 +15,7 @@ function add_styles()
 }
 
 /**
- * function to add my custom styles
+ * function to add my custom scripts
  * by: ahmed abdelfatah
  * wp_enqueue_script($handle, $src, $deps, $ver, $in_footer)
  * get_template_directory_uri()
