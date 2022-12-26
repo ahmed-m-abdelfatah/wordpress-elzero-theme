@@ -54,3 +54,19 @@ function add_scripts()
 
 add_action('wp_enqueue_scripts', 'add_styles');
 add_action('wp_enqueue_scripts', 'add_scripts');
+
+/**
+ * add custom menu support
+ * by: ahmed abdelfatah
+ *
+ * notes:
+ * The __() is just an alias for it. So __("some text") is equivalent to gettext("some text")
+ * Returns a translated string if one is found in the translation table, or the submitted message if not found.
+ * https://stackoverflow.com/a/2427219
+ */
+
+function register_custom_menu()
+{
+  register_nav_menu('Bootstrap-menu', __('Navigation Bar'));
+}
+add_action('init', 'register_custom_menu');
