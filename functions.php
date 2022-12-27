@@ -5,6 +5,8 @@
 
 // https://github.com/AlexWebLab/bootstrap-5-wordpress-navbar-walker
 require_once('bootstrap-5-wp-nav-menu-walker.php');
+// [ ] need to learn php again
+// [ ] need to search how to make walker class
 
 /**
  * function to add my custom styles
