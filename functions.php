@@ -1,4 +1,10 @@
 <?php
+// include bootstrap navbar Walker
+// https://github.com/wp-bootstrap/wp-bootstrap-navwalker
+// require_once('wp-bootstrap-navwalker.php'); // not working
+
+// https://github.com/AlexWebLab/bootstrap-5-wordpress-navbar-walker
+require_once('bootstrap-5-wp-nav-menu-walker.php');
 
 /**
  * function to add my custom styles
@@ -47,15 +53,6 @@ function add_scripts()
 }
 
 /**
- * add actions
- * by: ahmed abdelfatah
- * add_action( $hook_name:string, $callback:callable, $priority:integer, $accepted_args:integer )
- */
-
-add_action('wp_enqueue_scripts', 'add_styles');
-add_action('wp_enqueue_scripts', 'add_scripts');
-
-/**
  * add custom menu support
  * by: ahmed abdelfatah
  *
@@ -67,6 +64,37 @@ add_action('wp_enqueue_scripts', 'add_scripts');
 
 function register_custom_menu()
 {
-  register_nav_menu('Bootstrap-menu', __('Navigation Bar'));
+  // register_nav_menu('Bootstrap-menu', __('Navigation Bar'));
+
+  register_nav_menus(array(
+    'Navigation-Bar' => 'Navigation Bar',
+    'Footer-menu' => 'Footer menu',
+  ));
 }
+
+/**
+ * nav menu
+ */
+
+function bootstrap_menu()
+{
+  wp_nav_menu(
+    array(
+      'theme_location' => 'Navigation-Bar',
+      'menu_class'     => 'navbar-nav ms-auto mb-2 mb-lg-0',
+      'container'      => false,
+      'depth'          => 2,
+      'walker'         => new bootstrap_5_wp_nav_menu_walker(),
+    )
+  );
+}
+
+/**
+ * add actions
+ * by: ahmed abdelfatah
+ * add_action( $hook_name:string, $callback:callable, $priority:integer, $accepted_args:integer )
+ */
+
+add_action('wp_enqueue_scripts', 'add_styles');
+add_action('wp_enqueue_scripts', 'add_scripts');
 add_action('init', 'register_custom_menu');
