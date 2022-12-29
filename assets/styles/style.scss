@@ -41,6 +41,9 @@ body {
   font-family: 'Open Sans', sans-serif;
   background-color: map-get($map: $colors, $key: eee);
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   // a {
   //   text-decoration: none;
@@ -52,21 +55,40 @@ body {
   // }
 }
 
-.main-post {
-  padding: 0.9375rem;
-  background-color: map-get($map: $colors, $key: white);
-  border: map-get($map: $border, $key: border);
-  border-radius: map-get($map: $border, $key: rad-10);
-  margin-bottom: 1.5rem;
+.main-wrapper {
+  flex: 1;
 
-  .post-title {
-    margin: 0 0 0.625rem;
-    font-weight: bold;
-    color: #777;
-  }
+  .main-post {
+    padding: 0.9375rem;
+    background-color: map-get($map: $colors, $key: white);
+    border: map-get($map: $border, $key: border);
+    border-radius: map-get($map: $border, $key: rad-10);
 
-  img {
-    margin: 0.625rem 0;
+    .post-title {
+      margin: 0 0 0.625rem;
+      font-weight: bold;
+      color: #777;
+    }
+
+    img {
+      margin: 0.625rem 0;
+    }
+
+    .post-author,
+    .post-date,
+    .post-comments {
+      font-size: 0.8125rem;
+    }
+
+    .post-summary {
+      color: #666;
+      line-height: 1.9;
+    }
+
+    i {
+      color: #999;
+      margin-#{$right}: 0.3125rem;
+    }
   }
 }
 
