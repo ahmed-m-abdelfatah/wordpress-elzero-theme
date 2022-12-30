@@ -6,6 +6,9 @@
 // https://github.com/AlexWebLab/bootstrap-5-wordpress-navbar-walker
 require_once('bootstrap-5-wp-nav-menu-walker.php');
 
+// Add featured image
+add_theme_support('post-thumbnails');
+
 /**
  * function to add my custom styles
  * by: ahmed abdelfatah
