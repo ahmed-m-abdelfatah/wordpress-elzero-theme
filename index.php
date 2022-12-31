@@ -40,7 +40,9 @@
                   </span>
                 </p>
                 <p class="card-text post-summary">
-                  <?php the_content('Read the full article ...') ?>
+                  <!-- <?php the_content('Read the full article ...') ?> -->
+                  <?php the_excerpt() ?>
+                  <!-- <a href="<?php echo get_permalink() ?>">Read more ...</a> -->
 
                 </p>
                 <p class="categories">
