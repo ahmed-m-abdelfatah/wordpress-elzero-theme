@@ -12,7 +12,7 @@
             <div class="card main-post">
               <?php the_post_thumbnail('', [
                 'class' => 'card-img-top',
-                'title' =>  'post img'
+                'title' =>  get_the_title() . ' thumbnail'
               ]) ?>
 
               <div class="card-body">
@@ -39,7 +39,10 @@
                     <?php comments_popup_link('0 Comments', '1 Comment', '% Comments', 'text-decoration-none', 'Comments Disabled') ?>
                   </span>
                 </p>
-                <p class="card-text post-summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos tempore minus sit velit dolore praesentium, tempora voluptates quia molestias, totam quam nobis sapiente dolor consectetur beatae expedita numquam hic. Repudiandae!</p>
+                <p class="card-text post-summary">
+                  <?php the_content('Read the full article ...') ?>
+
+                </p>
                 <p class="categories">
                   <i class="fas fa-tags"></i>
                   <?php the_category(' , '); ?>
