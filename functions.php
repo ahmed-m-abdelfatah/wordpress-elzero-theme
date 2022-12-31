@@ -15,7 +15,6 @@ add_theme_support('post-thumbnails');
  * wp_enqueue_style($handle, $src, $deps, $ver, $media)
  * get_template_directory_uri()
  */
-
 function add_styles()
 {
   wp_enqueue_style('font-awesome-css', get_template_directory_uri() . './assets_minified/lib/styles/all.min.css');
@@ -29,7 +28,6 @@ function add_styles()
  * wp_enqueue_script($handle, $src, $deps, $ver, $in_footer)
  * get_template_directory_uri()
  */
-
 function add_scripts()
 {
   /**
@@ -64,7 +62,6 @@ function add_scripts()
  * Returns a translated string if one is found in the translation table, or the submitted message if not found.
  * https://stackoverflow.com/a/2427219
  */
-
 function register_custom_menu()
 {
   // register_nav_menu('Bootstrap-menu', __('Navigation Bar'));
@@ -76,9 +73,9 @@ function register_custom_menu()
 }
 
 /**
- * nav menu
+ * use custom menu support
+ * by: ahmed abdelfatah
  */
-
 function bootstrap_menu()
 {
   wp_nav_menu(
@@ -93,11 +90,35 @@ function bootstrap_menu()
 }
 
 /**
+ * add custom excerpt support
+ * edit this function the_excerpt()
+ * words > 55
+ * remove [...]
+ * by: ahmed abdelfatah
+ */
+function custom_excerpt_length($length)
+{
+  return 15;
+}
+
+function custom_excerpt_more($more)
+{
+  return ' ...';
+}
+
+/**
+ * add filters
+ * by: ahmed abdelfatah
+ * add_action( $hook_name:string, $callback:callable, $priority:integer, $accepted_args:integer )
+ */
+add_filter('excerpt_length', 'custom_excerpt_length');
+add_filter('excerpt_more', 'custom_excerpt_more');
+
+/**
  * add actions
  * by: ahmed abdelfatah
  * add_action( $hook_name:string, $callback:callable, $priority:integer, $accepted_args:integer )
  */
-
 add_action('wp_enqueue_scripts', 'add_styles');
 add_action('wp_enqueue_scripts', 'add_scripts');
 add_action('init', 'register_custom_menu');
