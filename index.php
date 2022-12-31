@@ -10,7 +10,10 @@
           the_post(); ?>
           <div class="col">
             <div class="card main-post">
-              <img src="http://unsplash.it/600?gravity=cente" class="card-img-top" alt="img">
+              <?php the_post_thumbnail('', [
+                'class' => 'card-img-top',
+                'title' =>  'post img'
+              ]) ?>
 
               <div class="card-body">
                 <!-- this for showing the before and after
@@ -31,7 +34,10 @@
                     <i class="fas fa-calendar-alt"></i>
                     <?php the_time('F j, Y') ?>
                   </span>
-                  <span class="post-comments"><i class="fas fa-comments"></i>1000</span>
+                  <span class="post-comments">
+                    <i class="fas fa-comments"></i>
+                    <?php comments_popup_link('0 Comments', '1 Comment', '% Comments', 'text-decoration-none', 'Comments Disabled') ?>
+                  </span>
                 </p>
                 <p class="card-text post-summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos tempore minus sit velit dolore praesentium, tempora voluptates quia molestias, totam quam nobis sapiente dolor consectetur beatae expedita numquam hic. Repudiandae!</p>
                 <p class="categories">
