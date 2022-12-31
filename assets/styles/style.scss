@@ -47,6 +47,7 @@ body {
 
   // a {
   //   text-decoration: none;
+  //   color: inherit;
   // }
 
   // ul {
@@ -88,6 +89,12 @@ body {
     i {
       color: #999;
       margin-#{$right}: 0.3125rem;
+    }
+
+    a {
+      color: black;
+      text-decoration: underline;
+      text-transform: capitalize;
     }
   }
 }
