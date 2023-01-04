@@ -2,13 +2,12 @@
 
 <main class="main-wrapper">
   <div class="container p-5">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="row g-4">
       <?php
-
       if (have_posts()) {
         while (have_posts()) {
           the_post(); ?>
-          <div class="col">
+          <div class="col-md-6">
             <div class="card main-post">
               <?php the_post_thumbnail('', [
                 'class' => 'card-img-top',
@@ -45,9 +44,19 @@
                   <!-- <a href="<?php echo get_permalink() ?>">Read more ...</a> -->
 
                 </p>
-                <p class="categories">
+                <p class="post-categories">
                   <i class="fas fa-tags"></i>
                   <?php the_category(' , '); ?>
+                </p>
+                <p class="post-tags">
+                  <?php
+                  if (has_tag()) {
+                    the_tags(null, ' ', null);
+                  } else {
+                    echo 'Tags: There is no tags';
+                  }
+
+                  ?>
                 </p>
               </div>
             </div>
@@ -55,6 +64,33 @@
       <?php  } // end of while loop
       } // end of if statement
       ?>
+
+      <div class="col-sm-12">
+        <div class="flex-grow-1 d-flex justify-content-between">
+          <?php
+          /**
+           * @Author: Ahmed Abdelfatah
+           * @Date: 2023-01-04 22:01:13
+           * @Desc: add pagination
+           */
+          function add_pagination()
+          {
+            if (get_previous_posts_link()) {
+              previous_posts_link('prev');
+            } else {
+              echo "<span>No previous page</span>";
+            }
+
+            if (get_next_posts_link()) {
+              next_posts_link('next');
+            } else {
+              echo "<span>No next page</span>";
+            }
+          };
+          add_pagination();
+          ?>
+        </div>
+      </div>
     </div>
   </div>
 </main>

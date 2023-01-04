@@ -10,8 +10,9 @@ require_once('bootstrap-5-wp-nav-menu-walker.php');
 add_theme_support('post-thumbnails');
 
 /**
- * function to add my custom styles
- * by: ahmed abdelfatah
+ * @Author: Ahmed Abdelfatah
+ * @Date: 2023-01-04 21:57:17
+ * @Desc: function to add my custom styles
  * wp_enqueue_style($handle, $src, $deps, $ver, $media)
  * get_template_directory_uri()
  */
@@ -23,8 +24,9 @@ function add_styles()
 }
 
 /**
- * function to add my custom scripts
- * by: ahmed abdelfatah
+ * @Author: Ahmed Abdelfatah
+ * @Date: 2023-01-04 21:57:56
+ * @Desc: function to add my custom scripts
  * wp_enqueue_script($handle, $src, $deps, $ver, $in_footer)
  * get_template_directory_uri()
  */
@@ -54,9 +56,9 @@ function add_scripts()
 }
 
 /**
- * add custom menu support
- * by: ahmed abdelfatah
- *
+ * @Author: Ahmed Abdelfatah
+ * @Date: 2023-01-04 21:58:50
+ * @Desc: add custom menu support
  * notes:
  * The __() is just an alias for it. So __("some text") is equivalent to gettext("some text")
  * Returns a translated string if one is found in the translation table, or the submitted message if not found.
@@ -73,8 +75,9 @@ function register_custom_menu()
 }
 
 /**
- * use custom menu support
- * by: ahmed abdelfatah
+ * @Author: Ahmed Abdelfatah
+ * @Date: 2023-01-04 21:59:20
+ * @Desc: use custom menu support
  */
 function bootstrap_menu()
 {
@@ -90,11 +93,12 @@ function bootstrap_menu()
 }
 
 /**
- * add custom excerpt support
+ * @Author: Ahmed Abdelfatah
+ * @Date: 2023-01-04 21:59:46
+ * @Desc: add custom excerpt support
  * edit this function the_excerpt()
  * words > 55
  * remove [...]
- * by: ahmed abdelfatah
  */
 function custom_excerpt_length($length)
 {
@@ -107,16 +111,18 @@ function custom_excerpt_more($more)
 }
 
 /**
- * add filters
- * by: ahmed abdelfatah
+ * @Author: Ahmed Abdelfatah
+ * @Date: 2023-01-04 22:00:18
+ * @Desc: add filters
  * add_action( $hook_name:string, $callback:callable, $priority:integer, $accepted_args:integer )
  */
 add_filter('excerpt_length', 'custom_excerpt_length');
 add_filter('excerpt_more', 'custom_excerpt_more');
 
 /**
- * add actions
- * by: ahmed abdelfatah
+ * @Author: Ahmed Abdelfatah
+ * @Date: 2023-01-04 22:00:45
+ * @Desc: add actions
  * add_action( $hook_name:string, $callback:callable, $priority:integer, $accepted_args:integer )
  */
 add_action('wp_enqueue_scripts', 'add_styles');
