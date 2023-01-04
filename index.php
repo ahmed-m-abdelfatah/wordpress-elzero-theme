@@ -63,34 +63,28 @@
           </div>
       <?php  } // end of while loop
       } // end of if statement
+
+      echo '<div class="col-sm-12">
+      <div class="post-pagination">';
+      /**
+       * @Author: Ahmed Abdelfatah
+       * @Date: 2023-01-04 22:01:13
+       * @Desc: add pagination
+       */
+      if (get_previous_posts_link()) {
+        previous_posts_link('<i class="fa fa-chevron-circle-left fa-fw fa-lg"></i> Prev');
+      } else {
+        echo '<span><i class="fa fa-chevron-circle-left fa-fw fa-lg"></i> Prev</span>';
+      }
+
+      if (get_next_posts_link()) {
+        next_posts_link('Next <i class="fa fa-chevron-circle-right fa-fw fa-lg"></i>');
+      } else {
+        echo '<span>Next <i class="fa fa-chevron-circle-right fa-fw fa-lg"></i></span>';
+      }
+      echo '</div>
+      </div>';
       ?>
-
-      <div class="col-sm-12">
-        <div class="flex-grow-1 d-flex justify-content-between">
-          <?php
-          /**
-           * @Author: Ahmed Abdelfatah
-           * @Date: 2023-01-04 22:01:13
-           * @Desc: add pagination
-           */
-          function add_pagination()
-          {
-            if (get_previous_posts_link()) {
-              previous_posts_link('prev');
-            } else {
-              echo "<span>No previous page</span>";
-            }
-
-            if (get_next_posts_link()) {
-              next_posts_link('next');
-            } else {
-              echo "<span>No next page</span>";
-            }
-          };
-          add_pagination();
-          ?>
-        </div>
-      </div>
     </div>
   </div>
 </main>
