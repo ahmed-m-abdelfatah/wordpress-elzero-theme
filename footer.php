@@ -1,5 +1,5 @@
 <footer class="footer text-center text-capitalize">
-  Copyright &copy; 2022 Elzero Web School
+  Copyright &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>
 </footer>
 
 <!-- add all scripts to footer -->

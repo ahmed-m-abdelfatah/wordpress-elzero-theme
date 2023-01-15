@@ -38,12 +38,12 @@
                     <?php comments_popup_link('0 Comments', '1 Comment', '% Comments', 'text-decoration-none', 'Comments Disabled') ?>
                   </span>
                 </p>
-                <p class="card-text post-summary">
+                <div class="card-text post-summary">
                   <!-- <?php the_content('Read the full article ...') ?> -->
-                  <?php the_excerpt() ?>
                   <!-- <a href="<?php echo get_permalink() ?>">Read more ...</a> -->
+                  <?php the_excerpt() ?>
 
-                </p>
+                </div>
                 <p class="post-categories">
                   <i class="fas fa-tags"></i>
                   <?php the_category(' , '); ?>
