@@ -1,0 +1,5 @@
+.footer {
+  background-color: map-get($map: $colors, $key: 333);
+  color: map-get($map: $colors, $key: eee);
+  padding: 1.25rem;
+}
